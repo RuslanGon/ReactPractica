@@ -1,6 +1,6 @@
 import MailBoxItem from "../MailBoxItem/MailBoxItem.jsx";
 
-const MailBoxList = ({boxUser,}) => {
+const MailBoxList = ({boxUser}) => {
   return (
     <ul>
     {Array.isArray(boxUser) &&
