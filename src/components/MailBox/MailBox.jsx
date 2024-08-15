@@ -1,9 +1,15 @@
 import MailBoxList from "../MailBoxList/MailBoxList.jsx";
 import css from '../MailBox/MailBox.module.css'
+import clsx from 'clsx'
 
 const MailBox = ({ boxTitle, MailBoxCounter = 0, boxUser }) => {
+
+  const isMailBoxCounterFull = MailBoxCounter === 0
+
   return (
-    <div className={css.maildiv}>
+    <div className={clsx(css.maildiv, {
+     [css.full] : isMailBoxCounterFull
+    })}>
       <h2 className={css.title}>{boxTitle}</h2>
       {MailBoxCounter === 0 ? (
         <p className={css.text}>

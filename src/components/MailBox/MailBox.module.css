@@ -14,3 +14,7 @@
 .text {
     margin-bottom: 10px;
 }
+
+.maildiv.full {
+    background-color: rgb(227, 41, 41);
+}
