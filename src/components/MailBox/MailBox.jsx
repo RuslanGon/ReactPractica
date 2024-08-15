@@ -9,15 +9,16 @@ const MailBox = ({ boxTitle, MailBoxCounter = 0, boxUser }) => {
       ) : (
         <p>Количество активных ячеек: {MailBoxCounter}</p>
       )}
-      <ul>
+    <ul>
         {Array.isArray(boxUser) &&
-          boxUser.map(user => (
-            <li key={user.id}>
-              <p>email: {user.userEmail}</p>
-              <p>name: {user.userName}</p>
-            </li>
-          ))
-        
+          boxUser.map(user => {
+            return (
+              <li key={user.id}>
+                <p>email: {user.userEmail}</p>
+                <p>name: {user.userName}</p>
+              </li>
+            );
+          })
         }
       </ul>
     </div>
