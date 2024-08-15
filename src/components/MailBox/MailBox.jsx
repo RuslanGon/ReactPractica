@@ -1,5 +1,6 @@
 
 
+
 const MailBox = ({ boxTitle, MailBoxCounter = 0 }) => {
   return (
     <div>
