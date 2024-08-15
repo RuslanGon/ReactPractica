@@ -1,24 +1,28 @@
-
-
-
-const MailBox = ({ boxTitle, MailBoxCounter = 0 }) => {
+const MailBox = ({ boxTitle, MailBoxCounter = 0, boxUser }) => {
   return (
     <div>
       <h2>{boxTitle}</h2>
       {MailBoxCounter === 0 ? (
         <p>
-          <b>К сожилению сейчас нет активных ячеек</b>
+          <b>К сожалению, сейчас нет активных ячеек</b>
         </p>
       ) : (
         <p>Количество активных ячеек: {MailBoxCounter}</p>
       )}
       <ul>
-        <li>Ruslan@gmail.com</li>
-        <li>Lenan@gmail.com</li>
-        <li>Marina@gmail.com</li>
+        {Array.isArray(boxUser) ? (
+          boxUser.map(user => (
+            <li key={user.id}>
+              <p>Email: {user.userEmail}</p>
+              <p>Name: {user.userName}</p>
+            </li>
+          ))
+        ) : (
+          <p>boxUser должен быть массивом</p>
+        )}
       </ul>
     </div>
   );
 };
 
-export default MailBox
+export default MailBox;
