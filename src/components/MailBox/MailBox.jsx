@@ -1,9 +1,9 @@
 
 
-const MailBox = () => {
+const MailBox = ({boxTitle}) => {
   return (
     <div>
-        <h2>MailBox Component</h2>
+        <h2>{boxTitle}</h2>
         <ul>
             <li>Ruslan@gmail.com</li>
             <li>Lenan@gmail.com</li>

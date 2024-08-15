@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div>
-     <MailBox />
+     <MailBox boxTitle="Meest Express" />   
     </div>
   )
 }
