@@ -10,16 +10,15 @@ const MailBox = ({ boxTitle, MailBoxCounter = 0, boxUser }) => {
         <p>Количество активных ячеек: {MailBoxCounter}</p>
       )}
       <ul>
-        {Array.isArray(boxUser) ? (
+        {Array.isArray(boxUser) &&
           boxUser.map(user => (
             <li key={user.id}>
               <p>email: {user.userEmail}</p>
               <p>name: {user.userName}</p>
             </li>
           ))
-        ) : (
-          <p>boxUser должен быть массивом</p>
-        )}
+        
+        }
       </ul>
     </div>
   );
