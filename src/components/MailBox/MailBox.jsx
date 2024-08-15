@@ -1,3 +1,5 @@
+import MailBoxList from "../MailBoxList/MailBoxList.jsx";
+
 const MailBox = ({ boxTitle, MailBoxCounter = 0, boxUser }) => {
   return (
     <div>
@@ -9,18 +11,7 @@ const MailBox = ({ boxTitle, MailBoxCounter = 0, boxUser }) => {
       ) : (
         <p>Количество активных ячеек: {MailBoxCounter}</p>
       )}
-    <ul>
-        {Array.isArray(boxUser) &&
-          boxUser.map(user => {
-            return (
-              <li key={user.id}>
-                <p>email: {user.userEmail}</p>
-                <p>name: {user.userName}</p>
-              </li>
-            );
-          })
-        }
-      </ul>
+      <MailBoxList boxUser={boxUser} />
     </div>
   );
 };
