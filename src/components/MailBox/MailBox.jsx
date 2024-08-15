@@ -13,8 +13,8 @@ const MailBox = ({ boxTitle, MailBoxCounter = 0, boxUser }) => {
         {Array.isArray(boxUser) ? (
           boxUser.map(user => (
             <li key={user.id}>
-              <p>Email: {user.userEmail}</p>
-              <p>Name: {user.userName}</p>
+              <p>email: {user.userEmail}</p>
+              <p>name: {user.userName}</p>
             </li>
           ))
         ) : (
