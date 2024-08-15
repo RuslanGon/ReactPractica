@@ -1,10 +1,11 @@
 
+import css from '../MailBoxItem/MailBoxItem.module.css'
 
 const MailBoxItem = ({user}) => {
   return (
     <li key={user.id}>
-            <p>email: {user.userEmail}</p>
-            <p>name: {user.userName}</p>
+            <p className={css.itemtext}>email:{user.userEmail}</p>
+            <p className={css.itemtext}>name: {user.userName}</p>
           </li>
   )
 }
