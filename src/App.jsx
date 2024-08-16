@@ -4,20 +4,23 @@ import MailBox from './components/MailBox/MailBox.jsx'
 import MeestExpress from '../meest.json'
 import NovaPoshta from '../nova.json'
 import UkrPoshta from '../ukr.json'
+import DrinksCounter from './components/DrinksCounter/DrinksCounter.jsx'
+import DrinksValues from './components/DrinksValues/DrinksValues.jsx'
 
 
 function App() {
 
-  const handleClick = () => {
-
+  const handleLogDrink = (drinkName) => {
+console.log(drinkName);
   }
  
   return (
     <div>
-      <button onClick={handleClick}>Click me</button>
-     <MailBox boxUser={MeestExpress} boxTitle="Meest Express" MailBoxCounter={5} />   
+     {/* <MailBox boxUser={MeestExpress} boxTitle="Meest Express" MailBoxCounter={5} />   
      <MailBox boxUser={NovaPoshta} boxTitle="Nova Poshta" MailBoxCounter={3} />   
-     <MailBox boxUser={UkrPoshta} boxTitle="UKR Poshta" MailBoxCounter={0} />   
+     <MailBox boxUser={UkrPoshta} boxTitle="UKR Poshta" MailBoxCounter={0} />   */}
+     <DrinksValues />
+     <DrinksCounter handleLogDrink={handleLogDrink} /> 
     </div>
   )
 }
