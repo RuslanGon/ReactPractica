@@ -15,12 +15,15 @@ function App() {
   const [drinks, setDrinks] = useState({beer: 0, whiskey: 0, wine: 0})
 
   const handleLogDrink = (drinkName) => {
+    if(drinks[drinkName] === 3 && drinkName === 'beer') return
     setDrinks({...drinks, [drinkName] : drinks[drinkName] + 1})
   };
 
   const handleReset = () => {
     setDrinks({ beer: 0, whiskey: 0, wine: 0 });
   }
+
+  const drinksTotal = drinks.beer + drinks.whiskey + drinks.wine
   
   const handleIncrementCounter = () => {
     setCounter(counter + 1)
@@ -38,7 +41,7 @@ function App() {
      <MailBox boxUser={UkrPoshta} boxTitle="UKR Poshta" MailBoxCounter={0} />   */}
      <button onClick={handleIncrementCounter}>Counter: {counter}</button>
      <button onClick={handleDecrementCounter}>decrement</button>
-     <DrinksValues drinks={drinks} />
+     <DrinksValues drinks={drinks} drinksTotal={drinksTotal} />
      <DrinksCounter handleLogDrink={handleLogDrink} handleReset={handleReset} /> 
     </div>
   )
