@@ -36,9 +36,9 @@ function App() {
 
   return (
     <div>
-     {/* <MailBox boxUser={MeestExpress} boxTitle="Meest Express" MailBoxCounter={5} />   
+     <MailBox boxUser={MeestExpress} boxTitle="Meest Express" MailBoxCounter={5} />   
      <MailBox boxUser={NovaPoshta} boxTitle="Nova Poshta" MailBoxCounter={3} />   
-     <MailBox boxUser={UkrPoshta} boxTitle="UKR Poshta" MailBoxCounter={0} />   */}
+     <MailBox boxUser={UkrPoshta} boxTitle="UKR Poshta" MailBoxCounter={0} />  
      <button onClick={handleIncrementCounter}>Counter: {counter}</button>
      <button onClick={handleDecrementCounter}>decrement</button>
      <DrinksValues drinks={drinks} drinksTotal={drinksTotal} />

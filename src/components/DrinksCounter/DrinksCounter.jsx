@@ -4,7 +4,7 @@ const DrinksCounter = ({handleLogDrink, handleReset}) => {
       <button onClick={() => handleLogDrink('beer')}>Beer 🍺</button>
       <button onClick={() => handleLogDrink('whiskey')}>Whiskey 🥃</button>
       <button onClick={() => handleLogDrink('wine')}>Wine 🍷</button>
-      <button onClick={handleReset}>Reset</button>
+      <button onClick={handleReset}>Reset ⥀</button>
     </div>
   );
 };
