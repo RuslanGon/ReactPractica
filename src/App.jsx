@@ -11,13 +11,16 @@ import { useState } from 'react'
 
 function App() {
 
-  const initialDrinks = {beer: 5, whiskey: 3, wine: 1}
+  const [counter, setCounter] = useState(0)
+  const [drinks, setDrinks] = useState({beer: 0, whiskey: 0, wine: 0})
 
   const handleLogDrink = (drinkName) => {
-  console.log(drinkName);
-  }
+    setDrinks({...drinks, [drinkName] : drinks[drinkName] + 1})
+  };
 
-  const [counter, setCounter] = useState(0)
+  const handleReset = () => {
+    setDrinks({ beer: 0, whiskey: 0, wine: 0 });
+  }
   
   const handleIncrementCounter = () => {
     setCounter(counter + 1)
@@ -27,7 +30,7 @@ function App() {
     if(counter === 0) return
     setCounter(counter - 1)
   } 
- 
+
   return (
     <div>
      {/* <MailBox boxUser={MeestExpress} boxTitle="Meest Express" MailBoxCounter={5} />   
@@ -35,9 +38,8 @@ function App() {
      <MailBox boxUser={UkrPoshta} boxTitle="UKR Poshta" MailBoxCounter={0} />   */}
      <button onClick={handleIncrementCounter}>Counter: {counter}</button>
      <button onClick={handleDecrementCounter}>decrement</button>
-
-     <DrinksValues drinks={initialDrinks} />
-     <DrinksCounter handleLogDrink={handleLogDrink} /> 
+     <DrinksValues drinks={drinks} />
+     <DrinksCounter handleLogDrink={handleLogDrink} handleReset={handleReset} /> 
     </div>
   )
 }
