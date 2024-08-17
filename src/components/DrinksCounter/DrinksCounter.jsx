@@ -1,14 +1,20 @@
 import { useEffect } from "react";
 
-const DrinksCounter = ({handleLogDrink, handleReset}) => {
+const DrinksCounter = ({handleLogDrink, handleReset, onToggleBarIsVisible}) => {
 
   useEffect(() => {
-    console.log('Hello');
-  
-    return () => {
-      console.log('Bye');
+    const onKeydown = (event) => {
+      if (event.code === "Escape") {
+        onToggleBarIsVisible();
+      }
     };
-  }, []);
+
+    window.addEventListener("keydown", onKeydown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeydown);
+    };
+  }, [onToggleBarIsVisible]);
 
   
   return (

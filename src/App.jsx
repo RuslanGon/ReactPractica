@@ -39,9 +39,6 @@ function App() {
     setIsVisibleBar(!isVisibleBar);
   }
 
-  useEffect(() => {
-    console.log('tur');
-  }, [drinksTotal])
 
   return (
     <div>
@@ -57,6 +54,7 @@ function App() {
           <DrinksCounter
             handleLogDrink={handleLogDrink}
             handleReset={handleReset}
+            onToggleBarIsVisible={onToggleBarIsVisible}
           />
         </>
       )}
