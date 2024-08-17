@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const DrinksCounter = ({handleLogDrink, handleReset, onToggleBarIsVisible}) => {
+const DrinksCounter = ({handleLogDrink, handleReset, onToggleBarIsVisible, drinksTotal}) => {
 
   useEffect(() => {
     const onKeydown = (event) => {
@@ -22,7 +22,8 @@ const DrinksCounter = ({handleLogDrink, handleReset, onToggleBarIsVisible}) => {
       <button onClick={() => handleLogDrink('beer')}>Beer 🍺</button>
       <button onClick={() => handleLogDrink('whiskey')}>Whiskey 🥃</button>
       <button onClick={() => handleLogDrink('wine')}>Wine 🍷</button>
-      <button onClick={handleReset}>Reset ⥀</button>
+      {drinksTotal > 0 && <button onClick={handleReset}>Reset ⥀</button> }
+      
     </div>
   );
 };

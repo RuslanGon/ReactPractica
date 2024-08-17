@@ -30,7 +30,7 @@ function App() {
   };
 
   const handleReset = () => {
-    setDrinks({ beer: 0, whiskey: 0, wine: 0 });
+    setDrinks(initialValues);
   }
 
   const drinksTotal = drinks.beer + drinks.whiskey + drinks.wine
@@ -63,6 +63,7 @@ function App() {
             handleLogDrink={handleLogDrink}
             handleReset={handleReset}
             onToggleBarIsVisible={onToggleBarIsVisible}
+            drinksTotal={drinksTotal}
           />
         </>
       )}
