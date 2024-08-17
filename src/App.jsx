@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 import MAilBoxForm from './components/MailBoxForm/MAilBoxForm.jsx';
 
 function App() {
-
+  const [filter, setFilter] = useState('')
   const [users, setUsers] = useState(() => {
     const stringifyUsers = localStorage.getItem('users')
     if(!stringifyUsers) return MeestExpress
@@ -33,11 +33,24 @@ function App() {
     setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
   }
 
+  const onChangeFilter = (event) => {
+    setFilter(event.target.value)
+  }
+
+  const filteredUsers = users.filter(user =>
+    user.userName.toLowerCase().includes(filter.toLowerCase()) ||
+    user.userEmail.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <div>
       <MAilBoxForm onAddUsers={onAddUsers} />
+      <section>
+        <h3>Search user by name or emaile</h3>
+        <input type="text" placeholder='search...' value={filter} onChange={onChangeFilter} />
+      </section>
       <br />
-      <MailBox boxUser={users} boxTitle="Meest Express" onDeleteUser={onDeleteUser}  />   
+      <MailBox boxUser={filteredUsers} boxTitle="Meest Express" onDeleteUser={onDeleteUser}  />   
     </div>
   );
 }
