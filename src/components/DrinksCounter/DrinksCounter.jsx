@@ -1,4 +1,16 @@
+import { useEffect } from "react";
+
 const DrinksCounter = ({handleLogDrink, handleReset}) => {
+
+  useEffect(() => {
+    console.log('Hello');
+  
+    return () => {
+      console.log('Bye');
+    };
+  }, []);
+
+  
   return (
     <div>
       <button onClick={() => handleLogDrink('beer')}>Beer 🍺</button>

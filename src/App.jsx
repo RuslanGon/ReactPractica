@@ -6,7 +6,7 @@ import NovaPoshta from '../nova.json'
 import UkrPoshta from '../ukr.json'
 import DrinksCounter from './components/DrinksCounter/DrinksCounter.jsx'
 import DrinksValues from './components/DrinksValues/DrinksValues.jsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 function App() {
@@ -38,6 +38,10 @@ function App() {
   const onToggleBarIsVisible = () => {
     setIsVisibleBar(!isVisibleBar);
   }
+
+  useEffect(() => {
+    console.log('tur');
+  }, [drinksTotal])
 
   return (
     <div>
