@@ -13,6 +13,7 @@ function App() {
 
   const [counter, setCounter] = useState(0)
   const [drinks, setDrinks] = useState({beer: 0, whiskey: 0, wine: 0})
+  const [isVisibleBar, setIsVisibleBar] = useState(false)
 
   const handleLogDrink = (drinkName) => {
     if(drinks[drinkName] === 3 && drinkName === 'beer') return
