@@ -10,7 +10,8 @@ function App() {
 
   const [users, setUsers] = useState(() => {
     const stringifyUsers = localStorage.getItem('users')
-    const parseUsers = JSON.parse(stringifyUsers) ?? MeestExpress
+    if(!stringifyUsers) return MeestExpress
+    const parseUsers = JSON.parse(stringifyUsers)
     return parseUsers
   })
 
