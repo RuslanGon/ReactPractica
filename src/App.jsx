@@ -20,6 +20,10 @@ function App() {
     return parseDrinks
   })
 
+  useEffect(() => {
+    localStorage.setItem('drinksValues', JSON.stringify(drinks))
+    }, [drinks])
+
   const handleLogDrink = (drinkName) => {
     if(drinks[drinkName] === 3 && drinkName === 'beer') return
     setDrinks({...drinks, [drinkName] : drinks[drinkName] + 1})
@@ -43,10 +47,6 @@ function App() {
   const onToggleBarIsVisible = () => {
     setIsVisibleBar(!isVisibleBar);
   }
-
-useEffect(() => {
-localStorage.setItem('drinksValues', JSON.stringify(drinks))
-}, [drinks])
 
   return (
     <div>
