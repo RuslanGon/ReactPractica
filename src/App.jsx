@@ -16,8 +16,8 @@ function App() {
       id: nanoid(),
     };
 
-    setUsers([...users, finalUser]);
-    //  setUsers((prevState) => [...prevState, finalUser])
+    // setUsers([...users, finalUser]);
+     setUsers((prevState) => [...prevState, finalUser])
   };
 
   return (
