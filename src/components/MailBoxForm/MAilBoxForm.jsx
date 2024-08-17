@@ -32,6 +32,7 @@ event.currentTarget.reset();
         <button type="submit">Create new user 👱</button>
       </label>
     </form>
+    
   );
 };
 
