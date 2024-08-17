@@ -1,12 +1,18 @@
 
 
-const MAilBoxForm = () => {
+const MAilBoxForm = ({onAddUsers}) => {
 
 const handleSubmit = (event) => {
 event.preventDefault();
+
 const userEmail = event.currentTarget.elements.userEmail.value
 const userName = event.currentTarget.elements.userName.value
-console.log(userEmail, userName);
+
+const formData = {userEmail, userName}
+
+onAddUsers(formData)
+
+event.currentTarget.reset();
 }
 
   return (

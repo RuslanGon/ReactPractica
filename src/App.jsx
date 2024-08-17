@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div>
-      <MAilBoxForm />
+      <MAilBoxForm onAddUsers={onAddUsers} />
       <br />
       <MailBox boxUser={users} boxTitle="Meest Express" />   
     </div>
