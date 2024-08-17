@@ -8,12 +8,17 @@ import DrinksCounter from './components/DrinksCounter/DrinksCounter.jsx'
 import DrinksValues from './components/DrinksValues/DrinksValues.jsx'
 import { useEffect, useState } from 'react'
 
+const initialValues = {beer: 0, whiskey: 0, wine: 0}
 
 function App() {
 
   const [counter, setCounter] = useState(0)
-  const [drinks, setDrinks] = useState({beer: 0, whiskey: 0, wine: 0})
   const [isVisibleBar, setIsVisibleBar] = useState(false)
+  const [drinks, setDrinks] = useState(() => {
+    const strigifyDrinks =  localStorage.getItem('drinksValues')
+    const parseDrinks =  JSON.parse(strigifyDrinks) ?? initialValues
+    return parseDrinks
+  })
 
   const handleLogDrink = (drinkName) => {
     if(drinks[drinkName] === 3 && drinkName === 'beer') return
@@ -39,6 +44,9 @@ function App() {
     setIsVisibleBar(!isVisibleBar);
   }
 
+useEffect(() => {
+localStorage.setItem('drinksValues', JSON.stringify(drinks))
+}, [drinks])
 
   return (
     <div>
