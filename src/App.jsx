@@ -12,7 +12,11 @@ const initialValues = {beer: 0, whiskey: 0, wine: 0}
 
 function App() {
 
-  const [counter, setCounter] = useState(0)
+  const [counter, setCounter] = useState(() => {
+    const counterSringify = localStorage.getItem('counterValues')
+    const parseCounter = JSON.parse(counterSringify) ?? 0
+    return parseCounter
+  })
   const [isVisibleBar, setIsVisibleBar] = useState(false)
   const [drinks, setDrinks] = useState(() => {
     const strigifyDrinks =  localStorage.getItem('drinksValues')
@@ -23,6 +27,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem('drinksValues', JSON.stringify(drinks))
     }, [drinks])
+
+  useEffect(() => {
+    localStorage.setItem('counterValues', JSON.stringify(counter))
+    }, [counter])
+
+
 
   const handleLogDrink = (drinkName) => {
     if(drinks[drinkName] === 3 && drinkName === 'beer') return
