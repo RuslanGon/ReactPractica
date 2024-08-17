@@ -22,8 +22,9 @@ function App() {
 
   return (
     <div>
-      <MailBox boxUser={users} boxTitle="Meest Express" />   
       <MAilBoxForm />
+      <br />
+      <MailBox boxUser={users} boxTitle="Meest Express" />   
     </div>
   );
 }
