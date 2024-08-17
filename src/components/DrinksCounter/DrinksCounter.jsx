@@ -22,7 +22,7 @@ const DrinksCounter = ({handleLogDrink, handleReset, onToggleBarIsVisible, drink
       <button onClick={() => handleLogDrink('beer')}>Beer 🍺</button>
       <button onClick={() => handleLogDrink('whiskey')}>Whiskey 🥃</button>
       <button onClick={() => handleLogDrink('wine')}>Wine 🍷</button>
-      {drinksTotal > 0 && <button onClick={handleReset}>Reset ⥀</button> }
+      {drinksTotal !== 0 && <button onClick={handleReset}>Reset ⥀</button> }
       
     </div>
   );
