@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Loader from "./components/Loader/Loader.jsx";
 import { Error } from "./components/Error/Error.jsx";
-import { requestProducts } from "./services/api.js";
+import { requestProducts, requestProductsByQuery } from "./services/api.js";
 import ProductList from "./components/ProductList/ProductList.jsx";
 import SearchForm from "./components/SearchForm/SearchForm.jsx";
 
@@ -34,7 +34,7 @@ if(query.length === 0) return
 async function fetchProductsByQuery() {
   try {
     setIsLoading(true);
-    const data = await requestProducts();
+    const data = await requestProductsByQuery(query);
     setProducts(data.products);
   } catch {
     setIsError(true);
