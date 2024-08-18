@@ -4,6 +4,7 @@ import Loader from "./components/Loader/Loader.jsx";
 import { Error } from "./components/Error/Error.jsx";
 import { requestProducts } from "./services/api.js";
 import ProductList from "./components/ProductList/ProductList.jsx";
+import SearchForm from "./components/SearchForm/SearchForm.jsx";
 
 const AppWithHttpRequest = () => {
   const [products, setProducts] = useState(null);
@@ -28,6 +29,7 @@ const AppWithHttpRequest = () => {
   return (
     <div>
       <h1>Smart Ukrainian Big Product Store</h1>
+      <SearchForm />
       {isLoading && <Loader />}
       {isError && <Error />}
       {products && <ProductList products={products} />}

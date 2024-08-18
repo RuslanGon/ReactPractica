@@ -13,8 +13,8 @@ const FORM_INITIAL_VALUES = {
 
 const SearchForm = ({ onAddUsers }) => {
   const handleSubmit = (values) => {
+    // console.log(values);
     onAddUsers(values);
-
   };
 
   return (
