@@ -7,12 +7,9 @@ const FORM_INITIAL_VALUES = {
 
 const MAilBoxForm = ({onAddUsers}) => {
 
-const handleSubmit = (event) => {
-
-
-onAddUsers(formData)
-
-
+const handleSubmit = (values, actions) => {
+onAddUsers(values)
+actions.resetForm()
 }
 
   return (
