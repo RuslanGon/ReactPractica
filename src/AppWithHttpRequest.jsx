@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import axios from 'axios';
 import Loader from './components/Loader/Loader.jsx';
 import { Error } from './components/Error/Error.jsx';
+import { requestProducts } from './services/api.js';
 
 const AppWithHttpRequest = () => {
   const [products, setProducts] = useState(null);
@@ -13,7 +13,7 @@ const AppWithHttpRequest = () => {
     async function fetchProducts() {
       try {
         setIsLoading(true);
-        const { data } = await axios.get("https://dummyjson.com/products");
+        const  data  = await requestProducts() ;
         setProducts(data.products);
       } catch {
         setIsError(true);
