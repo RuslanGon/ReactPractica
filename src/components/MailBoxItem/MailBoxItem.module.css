@@ -1,11 +1,3 @@
-.itemtext {
-    margin-bottom: 2px;
-}
-
-.itemli {
-    margin-bottom: 20px;
-}
-
 .name {
     display: flex;
     align-items: center;
@@ -13,6 +5,11 @@
 
 .color {
     width: 15px;
-    height: 15p;
-    margin-right: 7px;
+    height: 15px;
+    margin-right: 6px;
+    margin-left: 6px;
+}
+
+.btn {
+    background-color: rgb(237, 141, 134);
 }

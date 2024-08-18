@@ -1,18 +1,16 @@
-
 import css from '../MailBoxItem/MailBoxItem.module.css'
 
-const MailBoxItem = ({ user, onDeleteUser }) => {
+const MailBoxItem = ({ user, onDeletUser }) => {
   return (
-    <li className={css.itemli} key={user.id}>
-      <p className={css.itemtext}>
-        <b>email</b>: {user.userEmail}
-      </p>
-      <p className={css.itemtext}>
-        <b>name</b>: {user.userName}
-      </p>
-      <button type='submit' onClick={() => onDeleteUser(user.id)}>❌ User</button>
-    </li>
+    <li>
+    <p>Email: {user.userEmail}</p>
+    <p className={css.name}>Name: <span style={{backgroundColor: user.favColor}} className={css.color} /> {user.userName}</p>
+    <button type="button" onClick={() => onDeletUser(user.id)}>❌ Delete user</button>
+  </li>
   );
 };
 
+
 export default MailBoxItem
+
+
