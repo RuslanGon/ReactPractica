@@ -31,7 +31,7 @@ const AppWithHttpRequest = () => {
     <div>
         <h1>Smart Ukrainian Big Product Store</h1>
         <ul>
-           {Array.isArray(products) && products.map(product => {
+           {Array.isArray(products) && products.map((product) => {
             return (<li key={product.id}> 
                 <img width={250} height={250} src={product.thumbnail} alt={product.title} />
                 <h2>Title: {product.title}</h2>
