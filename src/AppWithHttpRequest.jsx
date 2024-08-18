@@ -33,7 +33,7 @@ const AppWithHttpRequest = () => {
         <ul>
            {Array.isArray(products) && products.map(product => {
             return (<li key={product.id}> 
-                <img width={250} height={250} src="" alt="" />
+                <img width={250} height={250} src={product.thumbnail} alt={product.title} />
                 <h2>Title: {product.title}</h2>
                 <p>Id {product.id}:</p>
                 <p>Total: {product.total}</p>
