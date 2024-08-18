@@ -5,3 +5,14 @@
 .itemli {
     margin-bottom: 20px;
 }
+
+.name {
+    display: flex;
+    align-items: center;
+}
+
+.color {
+    width: 15px;
+    height: 15p;
+    margin-right: 7px;
+}
