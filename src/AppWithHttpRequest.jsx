@@ -27,8 +27,22 @@ const AppWithHttpRequest = () => {
     fetchProducts();
   }, []);
 
-useEffect(() => {
 
+useEffect(() => {
+if(query.length === 0) return
+
+async function fetchProductsByQuery() {
+  try {
+    setIsLoading(true);
+    const data = await requestProducts();
+    setProducts(data.products);
+  } catch {
+    setIsError(true);
+  } finally {
+    setIsLoading(false);
+  }
+}
+fetchProductsByQuery();
 }, [query])
 
   const onSetSearchQuery = (searchTerm) => {
