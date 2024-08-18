@@ -1,25 +1,25 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as yup from 'yup'
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as yup from "yup";
 
-const userSchema = yup.object({
+const mailBoxSchema = yup.object({
   userEmail: yup.string().defined(),
-  userName: yup.string().default('').nullable(),
+  userName: yup.string().default("").nullable(),
 });
 
 const FORM_INITIAL_VALUES = {
-  userEmail: '',
-  userName: ''
-}
+  userEmail: "",
+  userName: "",
+};
 
-const MAilBoxForm = ({onAddUsers}) => {
-
-const handleSubmit = (values, actions) => {
-onAddUsers(values)
-actions.resetForm()
-}
+const MAilBoxForm = ({ onAddUsers }) => {
+  const handleSubmit = (values, actions) => {
+    onAddUsers(values);
+    actions.resetForm();
+  };
 
   return (
-    <Formik initialValues={FORM_INITIAL_VALUES} onSubmit={handleSubmit}> validationSchema={userSchema}
+    <Formik initialValues={FORM_INITIAL_VALUES} onSubmit={handleSubmit}>
+      validationSchema={mailBoxSchema}
       <Form>
         <h2>Add new MailBox user</h2>
         <label>
@@ -42,4 +42,4 @@ actions.resetForm()
   );
 };
 
-export default MAilBoxForm
+export default MAilBoxForm;
