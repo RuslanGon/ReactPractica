@@ -3,8 +3,7 @@ import * as Yup from "yup";
 
 
 const mailBoxSchema = Yup.object({
-  userEmail: Yup.string()
-    .email("Invalid email format").required("Email is required"),
+  userEmail: Yup.string().email("Invalid email format").required("Email is required"),
   userName: Yup.string().required("Name is required"),
 });
 
