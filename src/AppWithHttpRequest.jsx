@@ -2,17 +2,24 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import Loader from './components/Loader/Loader.jsx';
+import { Error } from './components/Error/Error.jsx';
 
 const AppWithHttpRequest = () => {
   const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     async function fetchProducts() {
-      setIsLoading(true)
-      const { data } = await axios.get("https://dummyjson.com/products");
-      setProducts(data.products);
-      setIsLoading(false)
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get("https://dummyjson.com/products");
+        setProducts(data.products);
+      } catch {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
     }
     fetchProducts();
   }, []);
@@ -20,8 +27,8 @@ const AppWithHttpRequest = () => {
   return (
     <div>
       <h1>Smart Ukrainian Big Product Store</h1>
-      {isLoading && <Loader />
-      }
+      {isLoading && <Loader />}
+      {isError && <Error /> }
       <ul>
         {Array.isArray(products) &&
           products.map((product) => (
