@@ -1,23 +1,22 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+const FORM_INITIAL_VALUES = {
+  userEmail: '',
+  userName: ''
+}
 
 const MAilBoxForm = ({onAddUsers}) => {
 
 const handleSubmit = (event) => {
-event.preventDefault();
 
-const userEmail = event.currentTarget.elements.userEmail.value
-const userName = event.currentTarget.elements.userName.value
-
-const formData = {userEmail, userName}
 
 onAddUsers(formData)
 
-event.currentTarget.reset();
+
 }
 
   return (
-    <Formik initialValues={{}} onSubmit={handleSubmit}>
+    <Formik initialValues={FORM_INITIAL_VALUES} onSubmit={handleSubmit}>
       <Form>
         <h2>Add new MailBox user</h2>
         <label>
