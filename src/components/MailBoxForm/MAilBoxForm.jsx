@@ -1,4 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as yup from 'yup'
+
+const userSchema = yup.object({
+  userEmail: yup.string().defined(),
+  userName: yup.string().default('').nullable(),
+});
 
 const FORM_INITIAL_VALUES = {
   userEmail: '',
@@ -13,7 +19,7 @@ actions.resetForm()
 }
 
   return (
-    <Formik initialValues={FORM_INITIAL_VALUES} onSubmit={handleSubmit}>
+    <Formik initialValues={FORM_INITIAL_VALUES} onSubmit={handleSubmit}> validationSchema={userSchema}
       <Form>
         <h2>Add new MailBox user</h2>
         <label>
