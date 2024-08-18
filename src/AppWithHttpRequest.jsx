@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 
 const AppWithHttpRequest = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
     async function fetchProducts() {
