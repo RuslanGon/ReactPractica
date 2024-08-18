@@ -10,6 +10,8 @@ const AppWithHttpRequest = () => {
   const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [query, setQuery] = useState('')
+  console.log(query);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -26,10 +28,14 @@ const AppWithHttpRequest = () => {
     fetchProducts();
   }, []);
 
+  const onSetSearchQuery = (searchTerm) => {
+    setQuery(searchTerm);
+  };
+
   return (
     <div>
       <h1>Smart Ukrainian Big Product Store</h1>
-      <SearchForm />
+      <SearchForm onSetSearchQuery={onSetSearchQuery} />
       {isLoading && <Loader />}
       {isError && <Error />}
       {products && <ProductList products={products} />}

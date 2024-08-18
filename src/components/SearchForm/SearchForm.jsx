@@ -11,10 +11,10 @@ const FORM_INITIAL_VALUES = {
   searchTerm: ""
 };
 
-const SearchForm = ({ onAddUsers }) => {
+const SearchForm = ({ onSetSearchQuery }) => {
   const handleSubmit = (values) => {
     // console.log(values);
-    onAddUsers(values);
+    onSetSearchQuery(values.searchTerm);
   };
 
   return (
@@ -29,7 +29,7 @@ const SearchForm = ({ onAddUsers }) => {
           <Field type="text" name="searchTerm" placeholder="search" />
           <ErrorMessage name="searchTerm" component="span" />
         </label>
-        <br />
+    
       <button type="submit" aria-label="Search">🔎</button>
       </Form>
     </Formik>
