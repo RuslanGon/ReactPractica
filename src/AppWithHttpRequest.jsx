@@ -6,6 +6,7 @@ import { Error } from "./components/Error/Error.jsx";
 import ProductList from "./components/ProductList/ProductList.jsx";
 import SearchForm from "./components/SearchForm/SearchForm.jsx";
 import { useProductSearch } from "./hooks/useProductSearch.jsx";
+import RefExample from "./components/refExample/refExample.jsx";
 
 const AppWithHttpRequest = () => {
  
@@ -14,6 +15,7 @@ const AppWithHttpRequest = () => {
   return (
     <div>
       <h1>Smart Ukrainian Big Product Store</h1>
+      <RefExample />
       <SearchForm onSetSearchQuery={onSetSearchQuery} />
       {isLoading && <Loader />}
       {isError && <Error />}
