@@ -23,13 +23,14 @@ const App = () => {
           <NavLink className={getNavLinkClassName} to='/search'>Search</NavLink>
         </nav>
       </header>
+      <main>
       <Routes>
         <Route path="/" element={<HomePage />} />  
         <Route path="/mailbox" element={<MailboxPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/search" element={<SearchPage />} />
       </Routes>
-    
+      </main>
     </div>
   );
 };
