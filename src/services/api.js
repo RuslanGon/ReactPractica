@@ -13,3 +13,8 @@ export const requestProductsByQuery = async (query = '') => {
     const { data } = await instance.get(`/products/search?q=${query}`);
     return data
 }
+
+export const requestProductsDetailsById = async (productId) => {
+    const { data } = await instance.get(`/products/${productId}`);
+    return data
+}
