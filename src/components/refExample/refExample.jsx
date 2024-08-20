@@ -5,7 +5,7 @@ const RefExample = () => {
 
   const handleButtonClick = () => {
     if (inputRef.current) {
-      inputRef.current.focus(); // Устанавливаем фокус на инпуте
+      inputRef.current.focus();
     }
   };
 
