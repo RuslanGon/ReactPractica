@@ -33,7 +33,6 @@ const SearchForm = ({ onSetSearchQuery }) => {
       validationSchema={searchFormSchema}
     >
       <Form>
-        <h2>Search product by brand or name</h2>
         <label>
           <Field type="text" name="searchTerm" placeholder="search" />
           <ErrorMessage name="searchTerm" component="span" />
