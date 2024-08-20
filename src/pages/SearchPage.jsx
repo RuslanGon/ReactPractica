@@ -12,7 +12,7 @@ const SearchPage = () => {
 
   return (
     <div>
-      <h1>Smart Ukrainian Big Product Store</h1>
+      <h1>Search Product</h1>
       <SearchForm onSetSearchQuery={onSetSearchQuery} />
       {isLoading && <Loader />}
       {isError && <Error />}
