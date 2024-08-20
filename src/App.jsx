@@ -1,21 +1,26 @@
+import { NavLink } from 'react-router-dom';
+import './App.css';
+import css from './App.module.css';
+import clsx from 'clsx';
 
-import { NavLink } from 'react-router-dom'
-import './App.css'
-// import MailboxPage from './pages/MailboxPage.jsx'
-// import ProductsPage from './pages/ProductsPage.jsx'
-// import SearchPage from './pages/SearchPage.jsx'
+const getNavLinkClassName = ({ isActive }) => {
+  return clsx(css.navLink, {
+    [css.active]: isActive,
+  });
+};
 
 const App = () => {
   return (
     <div>
       <header>
-        <NavLink to='/mailbox'>MailBox</NavLink>
-        <NavLink to='/products'>Products</NavLink>
-        <NavLink to='/search'>Search</NavLink>
+        <nav className={css.nav}>
+          <NavLink className={getNavLinkClassName} to='/mailbox'>MailBox</NavLink>
+          <NavLink className={getNavLinkClassName} to='/products'>Products</NavLink>
+          <NavLink className={getNavLinkClassName} to='/search'>Search</NavLink>
+        </nav>
       </header>
-    
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -1,0 +1,21 @@
+.nav{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navLink{
+padding: 15px 20px;
+border: 2px solid black;
+background-color: transparent;
+color: black;
+text-decoration: none;
+border-radius: 7px;
+font-size: 20px;
+transition: all 0.1s;
+}
+
+.active{
+color: white;
+background-color: black;
+}
