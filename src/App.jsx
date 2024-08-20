@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import MailboxPage from './pages/MailboxPage.jsx';
 import ProductsPage from './pages/ProductsPage.jsx';
 import SearchPage from './pages/SearchPage.jsx';
+import HomePage from './pages/HomePage.jsx';
 
 const getNavLinkClassName = ({ isActive }) => {
   return clsx(css.navLink, {
@@ -16,12 +17,14 @@ const App = () => {
     <div>
       <header>
         <nav className={css.nav}>
+        <NavLink className={getNavLinkClassName} to='/'>Home Page</NavLink>
           <NavLink className={getNavLinkClassName} to='/mailbox'>MailBox</NavLink>
           <NavLink className={getNavLinkClassName} to='/products'>Products</NavLink>
           <NavLink className={getNavLinkClassName} to='/search'>Search</NavLink>
         </nav>
       </header>
       <Routes>
+        <Route path="/" element={<HomePage />} />  
         <Route path="/mailbox" element={<MailboxPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/search" element={<SearchPage />} />
