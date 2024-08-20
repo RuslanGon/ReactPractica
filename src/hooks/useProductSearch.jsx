@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { requestProducts, requestProductsByQuery } from "../services/api.js";
 
-export const useProductSearch = () => {
+export const useProductSearch = ({isSearchPage = false}) => {
 
     const [products, setProducts] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -9,6 +9,7 @@ export const useProductSearch = () => {
     const [query, setQuery] = useState('')
   
     useEffect(() => {
+      if(isSearchPage) return
       async function fetchProducts() {
         try {
           setIsLoading(true);
@@ -21,7 +22,7 @@ export const useProductSearch = () => {
         }
       }
       fetchProducts();
-    }, []);
+    }, [isSearchPage]);
   
   
   useEffect(() => {
