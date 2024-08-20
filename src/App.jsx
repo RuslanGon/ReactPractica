@@ -5,6 +5,7 @@ import MailboxPage from './pages/MailboxPage.jsx';
 import ProductsPage from './pages/ProductsPage.jsx';
 import SearchPage from './pages/SearchPage.jsx';
 import HomePage from './pages/HomePage.jsx';
+import NotFoundPage from './pages/NotFoundPage .jsx';
 
 const getNavLinkClassName = ({ isActive }) => {
   return clsx(css.navLink, {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/mailbox" element={<MailboxPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       </main>
     </div>
