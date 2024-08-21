@@ -37,7 +37,10 @@ function MailboxPage() {
   };
 
   const onDeleteUser = (userId) => {
-    setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
+    const action = {type: 'mailbox/DELETE_USER', payload: userId}
+    dispatch(action)
+    
+    // setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
   }
 
   const onChangeFilter = (event) => {
