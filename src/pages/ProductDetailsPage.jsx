@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { Link, Route, Routes, useParams } from "react-router-dom"
+import { useEffect, useRef, useState } from "react"
+import { Link, Route, Routes, useLocation, useParams } from "react-router-dom"
 import Loader from "../components/Loader/Loader.jsx"
 import { Error } from "../components/Error/Error.jsx"
 import { requestProductsDetailsById } from "../services/api.js"
@@ -8,6 +8,9 @@ import ReviewsPage from "./ReviewsPage.jsx"
 
 
 const ProductDetailsPage = () => {
+
+    const location = useLocation()
+    const backRefLink = useRef(location.state ?? '/')
 
     const {productId} = useParams()
 
@@ -34,6 +37,7 @@ const ProductDetailsPage = () => {
 
   return (
     <div>
+      <Link to={backRefLink.current}> Go back</Link>
       {isLoading && <Loader />}
       {isError && <Error />}
         <h1>Product Details {productId}</h1>
