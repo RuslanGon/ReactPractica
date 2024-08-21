@@ -19,6 +19,13 @@ export const mailboxReduser = (state = initialState, action) => {
         };
       }
 
+      case "mailbox/SET_FILTER": {
+        return {
+          ...state,
+          filter: action.payload
+        };
+      }
+
     default:
       return state;
   }

@@ -44,7 +44,10 @@ function MailboxPage() {
   }
 
   const onChangeFilter = (event) => {
-    setFilter(event.target.value)
+    const action = {type: 'mailbox/SET_FILTER', payload: event.target.value}
+    dispatch(action)
+
+    // setFilter(event.target.value)
   }
 
   const filteredUsers = users.filter(user =>
