@@ -5,15 +5,19 @@ import MeestExpress from '../../meest.json'
 import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import MAilBoxForm from '../components/MailBoxForm/MAilBoxForm.jsx';
+import { useDispatch, useSelector } from 'react-redux';
 
 function MailboxPage() {
-  const [filter, setFilter] = useState('')
-  const [users, setUsers] = useState(() => {
-    const stringifyUsers = localStorage.getItem('users')
-    if(!stringifyUsers) return MeestExpress
-    const parseUsers = JSON.parse(stringifyUsers)
-    return parseUsers
-  })
+  // const [filter, setFilter] = useState('')
+  // const [users, setUsers] = useState(() => {
+  //   const stringifyUsers = localStorage.getItem('users')
+  //   if(!stringifyUsers) return MeestExpress
+  //   const parseUsers = JSON.parse(stringifyUsers)
+  //   return parseUsers
+  // })
+  const dispatch = useDispatch()
+  const users = useSelector((state) => {return state.mailbox.users})
+  const filter = useSelector((state) => {return state.mailbox.filter})
 
   useEffect(() => {
     localStorage.setItem('users', JSON.stringify(users))
@@ -24,6 +28,9 @@ function MailboxPage() {
       ...formData,
       id: nanoid(),
     };
+
+    const action = {type: 'mailbox/ADD_USER', payload: finalUser}
+    dispatch(action)
 
     // setUsers([...users, finalUser]);
      setUsers((prevState) => [...prevState, finalUser])
