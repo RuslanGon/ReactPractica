@@ -22,7 +22,7 @@ return <Navigate to='/' replace />
       <h1>404 - Page Not Found</h1>
       <p>The page you are looking for does not exist.</p>
       <Link to="/">Go home</Link>
-      <h2>You will be redirected to home in {5 - timer} seconds</h2>
+      <h2>You will be redirected to home page in {5 - timer} seconds</h2>
     </div>
   );
 };
