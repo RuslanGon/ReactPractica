@@ -1,10 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import Loader from "../components/Loader/Loader.jsx";
 import { Error } from "../components/Error/Error.jsx";
 import { requestProductsDetailsById } from "../services/api.js";
-import CommentPage from "./CommentPage.jsx";
-import ReviewsPage from "./ReviewsPage.jsx";
+// import CommentPage from "./CommentPage.jsx";
+// import ReviewsPage from "./ReviewsPage.jsx";
+
+const CommentPage = lazy(() => import('./CommentPage.jsx'))
+const ReviewsPage = lazy(() => import('./ReviewsPage.jsx'))
+
 
 const ProductDetailsPage = () => {
   const location = useLocation();
@@ -49,10 +53,12 @@ const ProductDetailsPage = () => {
       )}
       <Link to="comments">Comment</Link>
       <Link to="reviews">Reviews</Link>
+      <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="comments" element={<CommentPage />} />
         <Route path="reviews" element={<ReviewsPage />} />
       </Routes>
+      </Suspense>
     </div>
   );
 };
