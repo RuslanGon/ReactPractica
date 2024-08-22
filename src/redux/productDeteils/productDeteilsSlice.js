@@ -21,7 +21,6 @@ const productDetailsSlice = createSlice({
     .addCase(apiRequestProductDetailsById.fulfilled, (state, action) => {
         state.isLoading = false, 
         state.productDetails = action.payload
-        state.isError = false;
     })
     .addCase(apiRequestProductDetailsById.rejected, (state) => {
         state.isLoading = false, 
