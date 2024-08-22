@@ -1,8 +1,8 @@
-import { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef} from "react";
 import { Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import Loader from "../components/Loader/Loader.jsx";
 import { Error } from "../components/Error/Error.jsx";
-import { requestProductsDetailsById } from "../services/api.js";
+// import { requestProductsDetailsById } from "../services/api.js";
 import { useDispatch, useSelector } from "react-redux";
 import { apiRequestProductDetailsById } from "../redux/productDeteils/operation.js";
 // import CommentPage from "./CommentPage.jsx";
