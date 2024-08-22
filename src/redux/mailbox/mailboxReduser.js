@@ -1,32 +1,62 @@
-const initialState = {
-  users: [],
-  filter: "",
-};
+import { createSlice } from "@reduxjs/toolkit";
 
-export const mailboxReduser = (state = initialState, action) => {
-  switch (action.type) {
-    case "mailbox/ADD_USER": {
-      return {
-        ...state,
-        users: [...state.users, action.payload]
-      };
-    }
+const tasksSlice = createSlice({
+  // Ім'я слайсу
+  name: "tasks",
+  // Початковий стан редюсера слайсу
+  initialState: [],
+  // Об'єкт редюсерів
+  reducers: {
+    addTask(state, action) {},
+    deleteTask(state, action) {},
+    toggleCompleted(state, action) {},
+  },
+});
 
-    case "mailbox/DELETE_USER": {
-        return {
-          ...state,
-          users: state.users.filter(user => user.id !== action.payload)
-        };
-      }
+// Генератори екшенів
+const { addTask, deleteTask, toggleCompleted } = tasksSlice.actions;
 
-      case "mailbox/SET_FILTER": {
-        return {
-          ...state,
-          filter: action.payload
-        };
-      }
+// Редюсер слайсу
+const tasksReducer = tasksSlice.reducer;
 
-    default:
-      return state;
-  }
-};
+
+
+
+
+
+
+
+// const initialState = {
+//   users: [],
+//   filter: "",
+// };
+
+// export const mailboxReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case "mailbox/ADD_USER": {
+//       return {
+//         ...state,
+//         users: [...state.users, action.payload]
+//       };
+//     }
+
+//     case "mailbox/DELETE_USER": {
+//         return {
+//           ...state,
+//           users: state.users.filter(user => user.id !== action.payload)
+//         };
+//       }
+
+//       case "mailbox/SET_FILTER": {
+//         return {
+//           ...state,
+//           filter: action.payload
+//         };
+//       }
+
+//     default:
+//       return state;
+//   }
+// };
+
+

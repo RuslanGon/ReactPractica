@@ -1,8 +1,7 @@
 
 import '../App.css'
 import MailBox from '../components/MailBox/MailBox.jsx'
-import MeestExpress from '../../meest.json'
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { nanoid } from 'nanoid';
 import MAilBoxForm from '../components/MailBoxForm/MAilBoxForm.jsx';
 import { useDispatch, useSelector } from 'react-redux';

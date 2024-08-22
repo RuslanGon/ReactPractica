@@ -1,11 +1,11 @@
-import { combineReducers, createStore } from "redux";
-import { mailboxReduser } from "./mailbox/mailboxReduser.js";
-import { devToolsEnhancer } from "@redux-devtools/extension";
 
-const rootReduser = combineReducers({
-mailbox: mailboxReduser 
-})
+import { mailboxReducer } from "./mailbox/mailboxReduser.js";
+import { configureStore } from "@reduxjs/toolkit";
 
-const enhancer = devToolsEnhancer();
 
-export const store = createStore(rootReduser, enhancer)
+export const store = configureStore({
+    reducer: {
+        mailbox: mailboxReducer 
+    }
+  });
+  
