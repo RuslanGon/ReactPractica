@@ -12,13 +12,13 @@ const mailboxSlice = createSlice({
   initialState: initialState,
   // Об'єкт редюсерів
   reducers: {
-    addUser(state, action) { state.users.push(action.payload)},
+    addUser(state, action) { state.users.push(action.payload) },
 
     deleteUser(state, action) {
       state.users = state.users.filter(user => user.id !== action.payload);
     },
 
-    setFilter(state, action) { state.filter = action.payload},
+    setFilter(state, action) { state.filter = action.payload },
   },
 });
 
