@@ -1,27 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const tasksSlice = createSlice({
+const initialState = {
+  users: [],
+  filter: "",
+};
+
+const mailboxSlice = createSlice({
   // Ім'я слайсу
-  name: "tasks",
+  name: "mailbox",
   // Початковий стан редюсера слайсу
-  initialState: [],
+  initialState: initialState,
   // Об'єкт редюсерів
   reducers: {
-    addTask(state, action) {},
-    deleteTask(state, action) {},
-    toggleCompleted(state, action) {},
+    addUser(state, action) { state.users.push(action.payload)},
+
+    deleteUser(state, action) {
+      state.users = state.users.filter(user => user.id !== action.payload);
+    },
+
+    setFilter(state, action) { state.filter = action.payload},
   },
 });
 
 // Генератори екшенів
-const { addTask, deleteTask, toggleCompleted } = tasksSlice.actions;
+export const { addUser, deleteUser, setFilter } = mailboxSlice.actions;
 
 // Редюсер слайсу
-const tasksReducer = tasksSlice.reducer;
-
-
-
-
+export const mailboxReducer = mailboxSlice.reducer;
 
 
 
