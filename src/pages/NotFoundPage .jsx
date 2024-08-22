@@ -1,17 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate} from "react-router-dom";
+import { incrementTimer } from "../redux/timer/timerSlice.js";
 
 const NotFoundPage = () => {
 
-  const [timer, setTimer] = useState(0)
+const dispatch = useDispatch()
+const timer = useSelector((state) => {return state.timerCount.timer})
+
+  // const [timer, setTimer] = useState(0)
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-       setTimer(prevTimer => prevTimer + 1)
+      dispatch(incrementTimer())
+      //  setTimer(prevTimer => prevTimer + 1)
     },1000)
 
     return () => clearInterval(intervalId)
-  }, [])
+  }, [dispatch])
 
   if(timer === 5){
 return <Navigate to='/' replace />

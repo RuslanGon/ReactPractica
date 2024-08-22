@@ -7,7 +7,7 @@ import { timerReducer } from "./timer/timerSlice.js";
 export const store = configureStore({
     reducer: {
         mailbox: mailboxReducer ,
-        timer: timerReducer
+        timerCount: timerReducer
     }
   });
   

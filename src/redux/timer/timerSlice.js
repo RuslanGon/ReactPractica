@@ -11,7 +11,7 @@ const timerSlice = createSlice({
   initialState: initialState,
   // Об'єкт редюсерів
   reducers: {
-   incrementTimer(state, action) {state.timer += action.payload || 1 },
+   incrementTimer(state) {state.timer += 1 },
   },
 });
 
