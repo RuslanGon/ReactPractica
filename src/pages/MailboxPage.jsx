@@ -29,23 +29,22 @@ function MailboxPage() {
       id: nanoid(),
     };
 
-    const action = addUser(finalUser)
-    dispatch(action)
+    dispatch(addUser(finalUser))
 
     // setUsers([...users, finalUser]);
     //  setUsers((prevState) => [...prevState, finalUser])
   };
 
   const onDeleteUser = (userId) => {
-    const action = deleteUser(userId)
-    dispatch(action)
+
+    dispatch(deleteUser(userId))
     
     // setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
   }
 
   const onChangeFilter = (event) => {
-    const action = setFilter(event.target.value)
-    dispatch(action)
+
+    dispatch(setFilter(event.target.value))
 
     // setFilter(event.target.value)
   }
