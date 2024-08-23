@@ -5,8 +5,9 @@ import { useEffect} from 'react';
 import { nanoid } from 'nanoid';
 import MAilBoxForm from '../components/MailBoxForm/MAilBoxForm.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser, deleteUser, setFilter } from '../redux/mailbox/mailboxReduser.js';
+import { addUser, deleteUser } from '../redux/mailbox/mailboxReduser.js';
 import { selectFilter, selectorUsers } from '../redux/mailbox/selectors.js';
+import MailBoxFilter from '../components/MailBoxFilter/MailBoxFilter.jsx';
 
 function MailboxPage() {
 
@@ -37,13 +38,6 @@ function MailboxPage() {
     // setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
   }
 
-  const onChangeFilter = (event) => {
-
-    dispatch(setFilter(event.target.value))
-
-    // setFilter(event.target.value)
-  }
-
   const filteredUsers = users.filter(user =>
     user.userName.toLowerCase().includes(filter.toLowerCase()) ||
     user.userEmail.toLowerCase().includes(filter.toLowerCase())
@@ -53,11 +47,14 @@ function MailboxPage() {
     <div>
       <MAilBoxForm onAddUsers={onAddUsers} />
       <section>
-        <h3>Search user by name or emaile</h3>
-        <input  type="text" placeholder='🔍  search...' value={filter} onChange={onChangeFilter} />
+        <MailBoxFilter />
       </section>
       <br />
-      <MailBox boxUser={filteredUsers} boxTitle="Meest Express" onDeleteUser={onDeleteUser}  />   
+      <MailBox
+        boxUser={filteredUsers}
+        boxTitle="Meest Express"
+        onDeleteUser={onDeleteUser}
+      />
     </div>
   );
 }
