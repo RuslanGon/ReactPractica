@@ -5,6 +5,7 @@ import { Error } from "../components/Error/Error.jsx";
 // import { requestProductsDetailsById } from "../services/api.js";
 import { useDispatch, useSelector } from "react-redux";
 import { apiRequestProductDetailsById } from "../redux/productDeteils/operation.js";
+import { selectIsError, selectIsLoading, selectProductDetails } from "../redux/productDeteils/selectors.js";
 // import CommentPage from "./CommentPage.jsx";
 // import ReviewsPage from "./ReviewsPage.jsx";
 
@@ -23,9 +24,9 @@ const ProductDetailsPage = () => {
   // const [isError, setIsError] = useState(false);
 
   const dispatch = useDispatch()
-  const productDetails = useSelector((state) => {return state.productDetails.productDetails})
-  const isLoading = useSelector((state) => {return state.productDetails.isLoading})
-  const isError = useSelector((state) => {return state.productDetails.isError})
+  const productDetails = useSelector(selectProductDetails)
+  const isLoading = useSelector(selectIsLoading)
+  const isError = useSelector(selectIsError)
 
 useEffect(() => {
   dispatch(apiRequestProductDetailsById(productId))
