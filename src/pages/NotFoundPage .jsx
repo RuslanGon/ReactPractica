@@ -2,11 +2,12 @@ import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate} from "react-router-dom";
 import { incrementTimer } from "../redux/timer/timerSlice.js";
+import { selectTimer } from "../redux/timer/selectors.js";
 
 const NotFoundPage = () => {
 
 const dispatch = useDispatch()
-const timer = useSelector((state) => {return state.timerCount.timer})
+const timer = useSelector(selectTimer)
 
   // const [timer, setTimer] = useState(0)
 

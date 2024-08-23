@@ -9,13 +9,7 @@ import { addUser, deleteUser, setFilter } from '../redux/mailbox/mailboxReduser.
 import { selectFilter, selectorUsers } from '../redux/mailbox/selectors.js';
 
 function MailboxPage() {
-  // const [filter, setFilter] = useState('')
-  // const [users, setUsers] = useState(() => {
-  //   const stringifyUsers = localStorage.getItem('users')
-  //   if(!stringifyUsers) return MeestExpress
-  //   const parseUsers = JSON.parse(stringifyUsers)
-  //   return parseUsers
-  // })
+
   const dispatch = useDispatch()
   const users = useSelector(selectorUsers)
   const filter = useSelector(selectFilter)
