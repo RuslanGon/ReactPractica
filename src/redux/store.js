@@ -14,6 +14,7 @@ import {
     REGISTER,
   } from 'redux-persist';
 import { productDetailsReducer } from "./productDeteils/productDeteilsSlice.js";
+import { authReducer } from "./auth/authSlice.js";
 
 
   const mailboxPersistConfig = {
@@ -26,7 +27,8 @@ export const store = configureStore({
     reducer: {
         mailbox: persistReducer(mailboxPersistConfig, mailboxReducer) ,
         timerCount: timerReducer,
-        productDetails: productDetailsReducer
+        productDetails: productDetailsReducer,
+        auth: authReducer
     },
 
     middleware: getDefaultMiddleware =>

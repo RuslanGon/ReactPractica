@@ -1,7 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-
 const loginSchema = Yup.object({
   email: Yup.string().email("Invalid email format").required("Email is required"),
   password: Yup.string().required("password is required"),
@@ -13,7 +12,7 @@ const FORM_INITIAL_VALUES = {
 };
 
 const LoginPage = () => {
-    
+
   const handleSubmit = (values, actions) => {
     console.log(values);
     actions.resetForm();
