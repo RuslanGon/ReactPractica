@@ -21,7 +21,6 @@ const RegistrationPage = () => {
 const dispatch = useDispatch()
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
     dispatch(apiRegistor(values))
     actions.resetForm();
   };
