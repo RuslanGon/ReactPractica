@@ -17,10 +17,16 @@ import { productDetailsReducer } from "./productDeteils/productDeteilsSlice.js";
 import { authReducer } from "./auth/authSlice.js";
 
 
-  const mailboxPersistConfig = {
-    key: 'mailbox',
+const mailboxPersistConfig = {
+  key: 'mailbox',
+  storage,
+  whitelist: ['users'],
+};
+
+  const authPersistConfig = {
+    key: 'auth',
     storage,
-    whitelist: ['users'], // Укажите состояния, которые нужно сохранять
+    whitelist: ['users', 'token'], 
   };
 
 export const store = configureStore({
@@ -28,7 +34,7 @@ export const store = configureStore({
         mailbox: persistReducer(mailboxPersistConfig, mailboxReducer) ,
         timerCount: timerReducer,
         productDetails: productDetailsReducer,
-        auth: authReducer
+        auth: persistReducer(authPersistConfig, authReducer) 
     },
 
     middleware: getDefaultMiddleware =>
