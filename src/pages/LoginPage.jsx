@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 
-const registorSchema = Yup.object({
+const loginSchema = Yup.object({
   email: Yup.string().email("Invalid email format").required("Email is required"),
   password: Yup.string().required("password is required"),
 });
@@ -22,7 +22,7 @@ const LoginPage = ({ onAddUsers }) => {
     <Formik
       initialValues={FORM_INITIAL_VALUES}
       onSubmit={handleSubmit}
-      validationSchema={registorSchema}
+      validationSchema={loginSchema}
     >
       <Form>
         <h2>Login user</h2>
