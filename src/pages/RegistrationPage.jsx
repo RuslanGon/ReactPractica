@@ -14,9 +14,9 @@ const FORM_INITIAL_VALUES = {
   password: ''
 };
 
-const RegistrationPage = ({ onAddUsers }) => {
+const RegistrationPage = () => {
   const handleSubmit = (values, actions) => {
-    onAddUsers(values);
+    console.log(values);
     actions.resetForm();
   };
 

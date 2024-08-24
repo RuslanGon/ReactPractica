@@ -12,9 +12,10 @@ const FORM_INITIAL_VALUES = {
   password: ''
 };
 
-const LoginPage = ({ onAddUsers }) => {
+const LoginPage = () => {
+    
   const handleSubmit = (values, actions) => {
-    onAddUsers(values);
+    console.log(values);
     actions.resetForm();
   };
 
