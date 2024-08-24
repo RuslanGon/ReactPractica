@@ -1,18 +1,7 @@
-import { NavLink, Route, Routes } from "react-router-dom";
-import css from "./App.module.css";
-import clsx from "clsx";
+import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Loader from "./components/Loader/Loader.jsx";
-import RegistrationPage from "./pages/RegistrationPage.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import ContactsPage from "./pages/ContactsPage.jsx";
-
-// import MailboxPage from './pages/MailboxPage.jsx';
-// import ProductsPage from './pages/ProductsPage.jsx';
-// import SearchPage from './pages/SearchPage.jsx';
-// import HomePage from './pages/HomePage.jsx';
-// import NotFoundPage from './pages/NotFoundPage .jsx';
-// import ProductDetailsPage from './pages/ProductDetailsPage.jsx';
+import Layout from "./components/Layout/Layout.jsx";
 
 const MailboxPage = lazy(() => import("./pages/MailboxPage.jsx"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage.jsx"));
@@ -20,42 +9,14 @@ const SearchPage = lazy(() => import("./pages/SearchPage.jsx"));
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage .jsx'))
 const ProductDetailsPage = lazy(() => import("./pages/ProductDetailsPage.jsx"));
-
-const getNavLinkClassName = ({ isActive }) => {
-  return clsx(css.navLink, {
-    [css.active]: isActive,
-  });
-};
+const RegistrationPage = lazy(() => import("./pages/RegistrationPage.jsx"));
+const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
+const ContactsPage = lazy(() => import("./pages/ContactsPage.jsx"));
 
 const App = () => {
   return (
     <div>
-      <header>
-        <nav className={css.nav}>
-          <NavLink className={getNavLinkClassName} to="/">
-            Home Page
-          </NavLink>
-          <NavLink className={getNavLinkClassName} to="/register">
-            Registr Page
-          </NavLink>
-          <NavLink className={getNavLinkClassName} to="/login">
-            Login Page
-          </NavLink>
-          <NavLink className={getNavLinkClassName} to="/contacts">
-            Contacts Page
-          </NavLink>
-          <NavLink className={getNavLinkClassName} to="/mailbox">
-            MailBox
-          </NavLink>
-          <NavLink className={getNavLinkClassName} to="/products">
-            Products
-          </NavLink>
-          <NavLink className={getNavLinkClassName} to="/search">
-            Search
-          </NavLink>
-        </nav>
-      </header>
-      <main>
+      <Layout>
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -72,7 +33,7 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
-      </main>
+        </Layout>
     </div>
   );
 };
