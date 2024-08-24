@@ -1,9 +1,59 @@
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 
-const RegistrationPage = () => {
+const registorSchema = Yup.object({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string().email("Invalid email format").required("Email is required"),
+  password: Yup.string().required("password is required"),
+});
+
+const FORM_INITIAL_VALUES = {
+  name: '',
+  email: '',
+  password: ''
+};
+
+const RegistrationPage = ({ onAddUsers }) => {
+  const handleSubmit = (values, actions) => {
+    onAddUsers(values);
+    actions.resetForm();
+  };
+
   return (
-    <div>RegistrationPage</div>
-  )
-}
+    <Formik
+      initialValues={FORM_INITIAL_VALUES}
+      onSubmit={handleSubmit}
+      validationSchema={registorSchema}
+    >
+      <Form>
+        <h2>Register new user</h2>
+        <label>
+          <span>name:</span>
+          <br />
+          <Field type="text" name="name" placeholder="name" />
+          <ErrorMessage name="name" component="span" />
+        </label>
+        <br />
+        <label>
+          <span>email:</span>
+          <br />
+          <Field type="email" name="email" placeholder="email" />
+          <ErrorMessage name="email" component="span" />
+          <br />
+        </label>
+        <label>
+          <span>password:</span>
+          <br />
+          <Field type="password" name="password" placeholder="password" />
+          <ErrorMessage name="password" component="span" />
+          <br />
+        </label>
+      <br />
+      <button type="submit">Redister new user 🕺</button>
+      </Form>
+    </Formik>
+  );
+};
 
-export default RegistrationPage
+export default RegistrationPage;
