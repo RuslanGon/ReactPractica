@@ -23,9 +23,9 @@ const initialState = {
 };
 
 const authSlice = createSlice({
-  // Ім'я слайсу
+
   name: "auth",
-  // Початковий стан редюсера слайсу
+
   initialState: initialState,
 
   extraReducers: (builder) =>
