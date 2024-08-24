@@ -27,3 +27,20 @@ export const apiRegistor = createAsyncThunk(
       }
     }
   );
+
+
+  export const apiRefreshUser = createAsyncThunk(
+    "auth/refresh",
+    async (_, thunkApi) => {
+      try {
+        const state = thunkApi.getState()
+        const token = state.auth.token
+        setToken(token)
+
+        const {data} = await instance.get('/users/current');
+        return data;
+      } catch (error) {
+        return thunkApi.rejectWithValue(error.message);
+      }
+    }
+  );

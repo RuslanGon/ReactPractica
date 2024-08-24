@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { apiLogin, apiRegistor } from "./operation.js";
+import { apiLogin, apiRefreshUser, apiRegistor } from "./operation.js";
 
 export const instance = axios.create({
     baseURL: 'https://connections-api.goit.global/docs/#/User/post_users_signup'
@@ -57,6 +57,21 @@ const authSlice = createSlice({
           state.token = action.payload.token
       })
       .addCase(apiLogin.rejected, (state) => {
+          state.isLoading = false, 
+          state.isError = true;
+      })
+
+
+      . addCase(apiRefreshUser.pending, (state) => {
+        state.isLoading = true, 
+        state.isError = false;
+      })
+      .addCase(apiRefreshUser.fulfilled, (state, action) => {
+          state.isLoading = false, 
+          state.isSignedIn = true,
+          state.userData = action.payload
+      })
+      .addCase(apiRefreshUser.rejected, (state) => {
           state.isLoading = false, 
           state.isError = true;
       })
