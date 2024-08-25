@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { instance, setToken } from "./authSlice.js";
+import { cleanToken, instance, setToken } from "./authSlice.js";
 
 export const apiRegistor = createAsyncThunk(
     "auth/register",
@@ -39,6 +39,20 @@ export const apiRegistor = createAsyncThunk(
 
         const {data} = await instance.get('/users/current');
         return data;
+      } catch (error) {
+        return thunkApi.rejectWithValue(error.message);
+      }
+    }
+  );
+
+
+  export const apiLogOut = createAsyncThunk(
+    "auth/logout",
+    async (thunkApi) => {
+      try {
+       await instance.post('/users/logout');
+        cleanToken()
+        return
       } catch (error) {
         return thunkApi.rejectWithValue(error.message);
       }
