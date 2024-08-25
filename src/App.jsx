@@ -5,6 +5,7 @@ import Layout from "./components/Layout/Layout.jsx";
 import { useDispatch } from "react-redux";
 import { apiRefreshUser } from "./redux/auth/operation.js";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute.jsx";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
 
 const MailboxPage = lazy(() => import("./pages/MailboxPage.jsx"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage.jsx"));
@@ -45,15 +46,15 @@ const App = () => {
                 </RestrictedRoute>
               }
             />
-            <Route path="/contacts" element={<ContactsPage />} />
-            <Route path="/mailbox" element={<MailboxPage />} />
-            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/contacts" element={<PrivateRoute> <ContactsPage /> </PrivateRoute>} />
+            <Route path="/mailbox" element={<PrivateRoute> <MailboxPage /> </PrivateRoute>} />
+            <Route path="/products" element={<PrivateRoute> <ProductsPage /> </PrivateRoute>} />
             <Route
               path="/products/:productId/*"
-              element={<ProductDetailsPage />}
+              element={<PrivateRoute> <ProductDetailsPage /> </PrivateRoute>}
             />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="/search" element={<PrivateRoute> <SearchPage /> </PrivateRoute>} />
+            <Route path="*" element={<PrivateRoute><NotFoundPage /> </PrivateRoute> } />
           </Routes>
         </Suspense>
       </Layout>

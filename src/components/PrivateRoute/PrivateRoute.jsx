@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
     const isSignedIn = useSelector(selectIsSignedIn)
 
     return (
-      isSignedIn ?  children : <Navigate to='/contacts' replace/> 
+      isSignedIn ?  children : <Navigate to='/login' replace/> 
     )
 
 }
