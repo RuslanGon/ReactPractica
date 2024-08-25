@@ -21,7 +21,7 @@ const contactsSlice = createSlice({
       })
       .addCase(apiGetContacts.fulfilled, (state, action) => {
         state.isLoading = false; 
-       
+        state.contacts = action.payload
       })
       .addCase(apiGetContacts.rejected, (state) => {
         state.isLoading = false; 
