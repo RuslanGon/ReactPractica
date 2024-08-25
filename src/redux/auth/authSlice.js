@@ -7,19 +7,19 @@ export const instance = axios.create({
 })
 
 export const setToken = (token) => {
-instance.defaults.headers.common.Authorization = ` Bearer ${token}`
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
 export const cleanToken = () => {
-instance.defaults.headers.common.Authorization = ''
+  instance.defaults.headers.common.Authorization = '';
 }
 
 const initialState = {
-    isSignedIn: false,
-    userData: null,
-    token: null,
-    isLoading: false,
-    isError: false
+  isSignedIn: false,
+  userData: null,
+  token: null,
+  isLoading: false,
+  isError: false
 };
 
 const authSlice = createSlice({
@@ -29,69 +29,63 @@ const authSlice = createSlice({
   initialState: initialState,
 
   extraReducers: (builder) =>
-    builder.
-    addCase(apiRegistor.pending, (state) => {
-      state.isLoading = true, 
-      state.isError = false;
-    })
-    .addCase(apiRegistor.fulfilled, (state, action) => {
-        state.isLoading = false, 
-        state.isSignedIn = true,
-        state.userData = action.payload.user
-        state.token = action.payload.token
-    })
-    .addCase(apiRegistor.rejected, (state) => {
-        state.isLoading = false, 
+    builder
+      .addCase(apiRegistor.pending, (state) => {
+        state.isLoading = true; 
+        state.isError = false;
+      })
+      .addCase(apiRegistor.fulfilled, (state, action) => {
+        state.isLoading = false; 
+        state.isSignedIn = true;
+        state.userData = action.payload.user;
+        state.token = action.payload.token;
+      })
+      .addCase(apiRegistor.rejected, (state) => {
+        state.isLoading = false; 
         state.isError = true;
-    })
+      })
 
-
-    .addCase(apiLogin.pending, (state) => {
-        state.isLoading = true, 
+      .addCase(apiLogin.pending, (state) => {
+        state.isLoading = true; 
         state.isError = false;
       })
       .addCase(apiLogin.fulfilled, (state, action) => {
-          state.isLoading = false, 
-          state.isSignedIn = true,
-          state.userData = action.payload.user
-          state.token = action.payload.token
+        state.isLoading = false; 
+        state.isSignedIn = true;
+        state.userData = action.payload.user;
+        state.token = action.payload.token;
       })
       .addCase(apiLogin.rejected, (state) => {
-          state.isLoading = false, 
-          state.isError = true;
+        state.isLoading = false; 
+        state.isError = true;
       })
 
-
       .addCase(apiRefreshUser.pending, (state) => {
-        state.isLoading = true, 
+        state.isLoading = true; 
         state.isError = false;
       })
       .addCase(apiRefreshUser.fulfilled, (state, action) => {
-          state.isLoading = false, 
-          state.isSignedIn = true,
-          state.userData = action.payload
+        state.isLoading = false; 
+        state.isSignedIn = true;
+        state.userData = action.payload;
       })
       .addCase(apiRefreshUser.rejected, (state) => {
-          state.isLoading = false, 
-          state.isError = true;
+        state.isLoading = false; 
+        state.isError = true;
       })
 
-
       .addCase(apiLogOut.pending, (state) => {
-        state.isLoading = true, 
+        state.isLoading = true; 
         state.isError = false;
       })
       .addCase(apiLogOut.fulfilled, () => {
-          return initialState
+        return initialState;  // Сброс к начальному состоянию при успешном логауте
       })
       .addCase(apiLogOut.rejected, (state) => {
-          state.isLoading = false, 
-          state.isError = true;
+        state.isLoading = false; 
+        state.isError = true;
       })
 
-    
 });
 
-
-// Редюсер слайсу
 export const authReducer = authSlice.reducer;
