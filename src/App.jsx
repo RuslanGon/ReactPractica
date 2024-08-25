@@ -4,24 +4,24 @@ import Loader from "./components/Loader/Loader.jsx";
 import Layout from "./components/Layout/Layout.jsx";
 import { useDispatch } from "react-redux";
 import { apiRefreshUser } from "./redux/auth/operation.js";
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute.jsx";
 
 const MailboxPage = lazy(() => import("./pages/MailboxPage.jsx"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage.jsx"));
 const SearchPage = lazy(() => import("./pages/SearchPage.jsx"));
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage .jsx'))
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage .jsx"));
 const ProductDetailsPage = lazy(() => import("./pages/ProductDetailsPage.jsx"));
 const RegistrationPage = lazy(() => import("./pages/RegistrationPage.jsx"));
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage.jsx"));
 
 const App = () => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(apiRefreshUser)
-  }, [dispatch])
+    dispatch(apiRefreshUser);
+  }, [dispatch]);
 
   return (
     <div>
@@ -29,8 +29,22 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<RegistrationPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute>
+                  <RegistrationPage />
+                </RestrictedRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute>
+                  <LoginPage />
+                </RestrictedRoute>
+              }
+            />
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="/mailbox" element={<MailboxPage />} />
             <Route path="/products" element={<ProductsPage />} />
@@ -42,7 +56,7 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
-        </Layout>
+      </Layout>
     </div>
   );
 };
