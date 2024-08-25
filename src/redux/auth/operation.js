@@ -6,7 +6,7 @@ export const apiRegistor = createAsyncThunk(
     async (formData, thunkApi) => {
       try {
         const {data} = await instance.post('/users/signup', formData);
-        setToken(data.token)
+        setToken(data.token);
         return data;
       } catch (error) {
         return thunkApi.rejectWithValue(error.message);
@@ -20,7 +20,7 @@ export const apiRegistor = createAsyncThunk(
     async (formData, thunkApi) => {
       try {
         const {data} = await instance.post('/users/login', formData);
-        setToken(data.token)
+        setToken(data.token);
         return data;
       } catch (error) {
         return thunkApi.rejectWithValue(error.message);
@@ -34,8 +34,8 @@ export const apiRegistor = createAsyncThunk(
     async (_, thunkApi) => {
       try {
         const state = thunkApi.getState()
-        const token = state.auth.token
-        setToken(token)
+        const token = state.auth.token;
+        setToken(token);
 
         const {data} = await instance.get('/users/current');
         return data;
@@ -51,8 +51,8 @@ export const apiRegistor = createAsyncThunk(
     async (thunkApi) => {
       try {
        await instance.post('/users/logout');
-        cleanToken()
-        return
+        cleanToken();
+        return;
       } catch (error) {
         return thunkApi.rejectWithValue(error.message);
       }
