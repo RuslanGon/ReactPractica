@@ -23,14 +23,20 @@ dispatch(apiGetContacts)
       {isLoading && <Loader />}
       {isError && <Error />}
       <ul>
-     {Array.isArray(contacts) && contacts.map(item => <li key={item.id}>
-      <h3>Name {item.name}</h3>
-      <p>Number {item.number}</p>
-     </li>)}
-        
+        {Array.isArray(contacts) && contacts.length === 0 && 
+          <li>You dont have any added contacts yet! </li>
+        }
+        {Array.isArray(contacts) &&
+          contacts.map(item => 
+            <li key={item.id}>
+              <h3>Name {item.name}</h3>
+              <p>Number {item.number}</p>
+            </li>
+          )}
       </ul>
+      <h2>dcdc</h2>
     </div>
-  )
+  );
 }
 
 export default ContactsPage
