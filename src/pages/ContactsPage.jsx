@@ -14,7 +14,7 @@ const isError  = useSelector(selectPhoneBookIsError)
 const contacts = useSelector(selectPhoneBookContacts)
 
 useEffect(() => {
-dispatch(apiGetContacts)
+dispatch(apiGetContacts())
 }, [dispatch])
   
   return (
