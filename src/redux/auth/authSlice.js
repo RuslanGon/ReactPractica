@@ -3,7 +3,7 @@ import axios from "axios";
 import { apiLogOut, apiLogin, apiRefreshUser, apiRegistor } from "./operation.js";
 
 export const instance = axios.create({
-    baseURL: 'https://connections-api.goit.global',
+    baseURL: 'https://connections-api.goit.global/docs/#/User/post_users_signup',
     // headers: {
     //   Authorization: `Bearer ${localStorage.getItem('token')}`
     // }
