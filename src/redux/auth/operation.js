@@ -48,7 +48,7 @@ export const apiRegistor = createAsyncThunk(
 
   export const apiLogOut = createAsyncThunk(
     "auth/logout",
-    async (thunkApi) => {
+    async (_, thunkApi) => {
       try {
        await instance.post('/users/logout');
         cleanToken();
