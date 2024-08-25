@@ -17,7 +17,6 @@ useEffect(() => {
 dispatch(apiGetContacts)
 }, [dispatch])
   
-
   return (
     <div>
       {isLoading && <Loader />}
@@ -34,7 +33,6 @@ dispatch(apiGetContacts)
             </li>
           )}
       </ul>
-      <h2>dcdc</h2>
     </div>
   );
 }
