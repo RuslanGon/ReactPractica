@@ -21,6 +21,7 @@ dispatch(apiGetContacts())
 
 const onDeleteContact = (contactId) => {
   dispatch(apiDeleteContact(contactId));
+  console.log(contactId);
 };
 
   return (
@@ -37,8 +38,7 @@ const onDeleteContact = (contactId) => {
             <li key={item.id}>
               <h3>name: <b>{item.name}</b></h3>
               <p>number: <b>{item.number}</b></p>
-              <button type="button" onClick={onDeleteContact}>delete</button>
-              {/* <button type="button" onClick={() => onDeleteContact(item.id)}>delete</button> */}
+              <button type="button" onClick={() => onDeleteContact(item.id)}>delete</button>
             </li>
           )}
       </ul>
