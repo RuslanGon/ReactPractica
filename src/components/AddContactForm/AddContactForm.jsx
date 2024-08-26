@@ -17,7 +17,8 @@ const AddContactForm = () => {
     const dispatch = useDispatch()
 
     const handleSubmit = (values, actions) => {
-      dispatch(apiLogin(values))
+        console.log(values);
+    //   dispatch(apiLogin(values))
       actions.resetForm();
     };
   
@@ -32,14 +33,14 @@ const AddContactForm = () => {
           <label>
             <span>name:</span>
             <br />
-            <Field type="text" name="name" placeholder="email" />
+            <Field type="text" name="name" placeholder="name" />
             <ErrorMessage name="name" component="span" />
             <br />
           </label>
           <label>
             <span>number:</span>
             <br />
-            <Field type="number" name="number" placeholder="password" />
+            <Field type="text" name="number" placeholder="number" />
             <ErrorMessage name="number" component="span" />
             <br />
           </label>

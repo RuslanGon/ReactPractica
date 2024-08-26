@@ -4,6 +4,7 @@ import { apiGetContacts } from "../redux/contacts/operation.js"
 import { selectPhoneBookContacts, selectPhoneBookIsError, selectPhoneBookIsLoading } from "../redux/contacts/selectors.js"
 import Loader from "../components/Loader/Loader.jsx"
 import { Error } from "../components/Error/Error.jsx"
+import AddContactForm from "../components/AddContactForm/AddContactForm.jsx"
 
 
 const ContactsPage = () => {
@@ -19,6 +20,7 @@ dispatch(apiGetContacts())
   
   return (
     <div>
+      <AddContactForm />
       {isLoading && <Loader />}
       {isError && <Error />}
       <ul>
