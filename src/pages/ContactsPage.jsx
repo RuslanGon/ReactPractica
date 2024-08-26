@@ -30,8 +30,8 @@ dispatch(apiGetContacts())
         {Array.isArray(contacts) &&
           contacts.map(item => 
             <li key={item.id}>
-              <h3>Name {item.name}</h3>
-              <p>Number {item.number}</p>
+              <h3>name: <b>{item.name}</b></h3>
+              <p>number: <b>{item.number}</b></p>
             </li>
           )}
       </ul>
