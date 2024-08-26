@@ -17,6 +17,8 @@ const contacts = useSelector(selectPhoneBookContacts)
 useEffect(() => {
 dispatch(apiGetContacts())
 }, [dispatch])
+
+
   
   return (
     <div>
@@ -32,6 +34,7 @@ dispatch(apiGetContacts())
             <li key={item.id}>
               <h3>name: <b>{item.name}</b></h3>
               <p>number: <b>{item.number}</b></p>
+              <button>delete</button>
             </li>
           )}
       </ul>
