@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
-import { apiLogin } from "../../redux/auth/operation.js";
 import * as Yup from "yup";
+import { apiAddNewContacts } from "../../redux/contacts/operation.js";
 
 const addContactSchema = Yup.object({
     name: Yup.string().required("name is required"),
@@ -18,7 +18,7 @@ const AddContactForm = () => {
 
     const handleSubmit = (values, actions) => {
         console.log(values);
-    //   dispatch(apiLogin(values))
+      dispatch(apiAddNewContacts(values))
       actions.resetForm();
     };
   
