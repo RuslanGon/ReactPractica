@@ -38,7 +38,7 @@ const onDeleteContact = (contactId) => {
             <li key={item.id}>
               <h3>name: <b>{item.name}</b></h3>
               <p>number: <b>{item.number}</b></p>
-              <button type="button" onClick={() => onDeleteContact(item.id)}>delete</button>
+              <button type="button" onClick={() => onDeleteContact(item.id)}>delete contact 🎈</button>
             </li>
           )}
       </ul>
