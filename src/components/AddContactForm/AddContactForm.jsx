@@ -3,16 +3,15 @@ import { useDispatch } from "react-redux";
 import { apiLogin } from "../../redux/auth/operation.js";
 import * as Yup from "yup";
 
-const loginSchema = Yup.object({
-    email: Yup.string().email("Invalid email format").required("Email is required"),
-    password: Yup.string().required("password is required"),
+const addContactSchema = Yup.object({
+    name: Yup.string().required("name is required"),
+    number: Yup.string().required("number is required"),
   });
   
   const FORM_INITIAL_VALUES = {
-    email: '',
-    password: ''
+    name: '',
+    number: ''
   };
-
 
 const AddContactForm = () => {
     const dispatch = useDispatch()
@@ -26,26 +25,26 @@ const AddContactForm = () => {
       <Formik
         initialValues={FORM_INITIAL_VALUES}
         onSubmit={handleSubmit}
-        validationSchema={loginSchema}
+        validationSchema={addContactSchema}
       >
         <Form>
-          <h2>Login user</h2>
+          <h2>Add new contact</h2>
           <label>
-            <span>email:</span>
+            <span>name:</span>
             <br />
-            <Field type="email" name="email" placeholder="email" />
-            <ErrorMessage name="email" component="span" />
+            <Field type="text" name="name" placeholder="email" />
+            <ErrorMessage name="name" component="span" />
             <br />
           </label>
           <label>
-            <span>password:</span>
+            <span>number:</span>
             <br />
-            <Field type="password" name="password" placeholder="password" />
-            <ErrorMessage name="password" component="span" />
+            <Field type="number" name="number" placeholder="password" />
+            <ErrorMessage name="number" component="span" />
             <br />
           </label>
         <br />
-        <button type="submit">Login user 🏃</button>
+        <button type="submit">Add contact 🧔</button>
         </Form>
       </Formik>
     );
