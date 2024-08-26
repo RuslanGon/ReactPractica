@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../auth/authSlice.js";
+import axios from "axios";
 
 export const apiGetContacts = createAsyncThunk(
     "contacts/getContacts",
@@ -22,6 +23,19 @@ export const apiGetContacts = createAsyncThunk(
         return data;
       } catch (error) {
         return thunkApi.rejectWithValue(error.message);
+      }
+    }
+  );
+  
+
+  export const apiDeleteContact = createAsyncThunk(
+    'contacts/deleteContact',
+    async (contactId, thunkAPI) => {
+      try {
+        await axios.delete(`/contacts/${contactId}`);
+        return contactId;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
       }
     }
   );

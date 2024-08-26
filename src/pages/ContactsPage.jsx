@@ -1,10 +1,11 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { apiGetContacts } from "../redux/contacts/operation.js"
+import { apiDeleteContact, apiGetContacts } from "../redux/contacts/operation.js"
 import { selectPhoneBookContacts, selectPhoneBookIsError, selectPhoneBookIsLoading } from "../redux/contacts/selectors.js"
 import Loader from "../components/Loader/Loader.jsx"
 import { Error } from "../components/Error/Error.jsx"
 import AddContactForm from "../components/AddContactForm/AddContactForm.jsx"
+
 
 
 const ContactsPage = () => {
@@ -18,8 +19,10 @@ useEffect(() => {
 dispatch(apiGetContacts())
 }, [dispatch])
 
+const onDeleteContact = (contactId) => {
+  dispatch(apiDeleteContact(contactId));
+};
 
-  
   return (
     <div>
       <AddContactForm />
@@ -34,7 +37,8 @@ dispatch(apiGetContacts())
             <li key={item.id}>
               <h3>name: <b>{item.name}</b></h3>
               <p>number: <b>{item.number}</b></p>
-              <button>delete</button>
+              <button type="button" onClick={onDeleteContact}>delete</button>
+              {/* <button type="button" onClick={() => onDeleteContact(item.id)}>delete</button> */}
             </li>
           )}
       </ul>
